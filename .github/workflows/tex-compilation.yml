@@ -23,7 +23,7 @@ jobs:
     - name: Build TeX
       run: |
         docker run --rm -v $PWD:/workspace -w /workspace texlive/texlive sh -c \
-        "pdflatex -interaction=nonstopmode -synctex=1 main.tex && biber main && pdflatex -interaction=nonstopmode -synctex=1 main.tex && pdflatex -interaction=nonstopmode -synctex=1 main.tex"
+        "latexmk -interaction=nonstopmode -synctex=1 -pdf -bibtex main.tex"
 
     - name: Commit output PDF
       run: |
